@@ -2,3 +2,7 @@
 resolver: lts-15.3
 packages:
 - .
+
+nix:
+  packages:
+    - zlib
