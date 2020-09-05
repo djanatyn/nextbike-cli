@@ -11,3 +11,12 @@ dependencies:
   - servant-client
   - servant-client-core
   - http-client-tls
+
+library:
+  source-dirs:
+    - src
+
+default-extensions:
+  - TypeApplications
+  - DeriveGeneric
+  - DerivingVia
