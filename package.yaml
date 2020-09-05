@@ -21,3 +21,4 @@ default-extensions:
   - DeriveGeneric
   - DerivingVia
   - DataKinds
+  - TypeOperators
