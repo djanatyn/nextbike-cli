@@ -10,6 +10,7 @@ module Nextbike.API.Types
   )
 where
 
+import Data.Aeson (FromJSON)
 import Data.Text (Text)
 
-newtype APIKey = APIKey Text
+newtype APIKey = APIKey Text deriving (FromJSON) via Text

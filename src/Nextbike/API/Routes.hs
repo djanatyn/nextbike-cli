@@ -15,3 +15,4 @@ import Servant.API.Generic
 
 data WebviewAPI r = WebviewAPI
   {getAPIKey :: r :- "getAPIKey.json" :> Get '[JSON] APIKey}
+  deriving (Generic)
