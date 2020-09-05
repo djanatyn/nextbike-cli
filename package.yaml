@@ -1,0 +1,13 @@
+---
+name: "nextbike"
+author: "Jonathan Strickland"
+
+dependencies:
+  - base
+  - text
+  - bytestring
+  - aeson
+  - servant
+  - servant-client
+  - servant-client-core
+  - http-client-tls
