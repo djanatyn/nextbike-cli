@@ -20,3 +20,4 @@ default-extensions:
   - TypeApplications
   - DeriveGeneric
   - DerivingVia
+  - DataKinds

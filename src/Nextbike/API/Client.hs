@@ -12,9 +12,10 @@ module Nextbike.API.Client
 where
 
 import Network.HTTP.Client.TLS (newTlsManager)
+import Servant.Client
 
 nextbikeApi :: String -> BaseUrl
-nextbikeApi = BaseUrl Https "api.nextbike.net"
+nextbikeApi = BaseUrl Https "api.nextbike.net" 443
 
 loginApi :: String -> BaseUrl
-loginApi :: BaseUrl Https "webview.nextbike.net"
+loginApi = BaseUrl Https "webview.nextbike.net" 443
