@@ -28,10 +28,10 @@ data WebviewApi r = WebviewAPI
 data NextbikeApi r = NextbikeApi
   { nextbikeLogin ::
       r :- "login.json"
-        :> QueryParam "apikey" ApiKey
-        :> QueryParam "mobile" Mobile
-        :> QueryParam "pin" Pin
-        :> QueryParam "show_errors" Bool
+        :> QueryParam' '[Required] "apikey" ApiKey
+        :> QueryParam' '[Required] "mobile" Mobile
+        :> QueryParam' '[Required] "pin" Pin
+        :> QueryParam' '[Required] "show_errors" Bool
         :> Get '[JSON] Value
   }
   deriving (Generic)
