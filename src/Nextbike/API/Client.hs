@@ -57,4 +57,12 @@ loginApi = BaseUrl Https "webview.nextbike.net" 443
 fetchApiKey :: IO (Either ClientError ApiKey)
 fetchApiKey = do
   m <- newTlsManager
-  runClientM (getApiKey webviewClient) $ mkClientEnv m $ loginApi ""
+  runClientM (getApiKey webviewClient) $
+    mkClientEnv m $ loginApi ""
+
+fetchSession :: NextbikeLogin -> IO (Either ClientError Value)
+fetchSession NextbikeLogin {apiKey, mobile, pin} = do
+  m <- newTlsManager
+  runClientM fetch $ mkClientEnv m $ nextbikeApi "api"
+  where
+    fetch = nextbikeLogin nextbikeClient apiKey mobile pin True
