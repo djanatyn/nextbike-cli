@@ -11,9 +11,12 @@ module Nextbike.API.Types
 where
 
 import Data.Aeson (FromJSON (..), withObject, (.:))
+import Data.Coerce (coerce)
 import Data.Text (Text)
 
 newtype APIKey = APIKey Text deriving (Show) via Text
 
 instance FromJSON APIKey where
-  parseJSON = withObject "response" (.: "apiKey")
+  parseJSON = withObject "response" $ \o -> do
+    key <- o .: "apiKey"
+    return $ APIKey key
