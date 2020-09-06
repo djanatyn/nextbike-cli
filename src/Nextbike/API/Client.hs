@@ -36,6 +36,9 @@ import Servant.Client.Generic (genericClient, AsClientT)
 webviewClient :: RunClient m => WebviewApi (AsClientT m)
 webviewClient = genericClient @WebviewApi
 
+nextbikeClient :: RunClient m => NextbikeApi (AsClientT m)
+nextbikeClient = genericClient @NextbikeApi
+
 nextbikeApi :: String -> BaseUrl
 nextbikeApi = BaseUrl Https "api.nextbike.net" 443
 
