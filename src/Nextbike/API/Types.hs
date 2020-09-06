@@ -5,8 +5,13 @@
 -- These types represent values that can be returned from the Nextbike API,
 -- representing authentication, places, available bikes, and rentals.
 module Nextbike.API.Types
-  ( -- * User Type
+  ( -- * Newtypes
     ApiKey (..),
+    Mobile (..),
+    Pin (..),
+
+    -- * Account Login
+    NextbikeLogin (..),
   )
 where
 
