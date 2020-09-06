@@ -22,3 +22,5 @@ default-extensions:
   - DataKinds
   - TypeOperators
   - OverloadedStrings
+  - NamedFieldPuns
+  - DerivingVia
