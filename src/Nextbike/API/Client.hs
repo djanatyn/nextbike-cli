@@ -15,8 +15,8 @@ module Nextbike.API.Client
 where
 
 import Network.HTTP.Client.TLS (newTlsManager)
-import Nextbike.API.Routes (WebviewAPI(..))
-import Nextbike.API.Types (APIKey)
+import Nextbike.API.Routes (WebviewApi(..))
+import Nextbike.API.Types (ApiKey)
 import Servant.Client
   ( BaseUrl(..),
     ClientM,
@@ -28,8 +28,8 @@ import Servant.Client
 import Servant.Client.Core (RunClient)
 import Servant.Client.Generic (genericClient, AsClientT)
 
-webviewClient :: RunClient m => WebviewAPI (AsClientT m)
-webviewClient = genericClient @WebviewAPI
+webviewClient :: RunClient m => WebviewApi (AsClientT m)
+webviewClient = genericClient @WebviewApi
 
 nextbikeApi :: String -> BaseUrl
 nextbikeApi = BaseUrl Https "api.nextbike.net" 443
@@ -37,7 +37,7 @@ nextbikeApi = BaseUrl Https "api.nextbike.net" 443
 loginApi :: String -> BaseUrl
 loginApi = BaseUrl Https "webview.nextbike.net" 443
 
-getAPIToken :: IO (Either ClientError APIKey)
-getAPIToken = do
+fetchApiKey :: IO (Either ClientError ApiKey)
+fetchApiKey = do
   m <- newTlsManager
-  runClientM (getAPIKey webviewClient) $ mkClientEnv m $ loginApi ""
+  runClientM (getApiKey webviewClient) $ mkClientEnv m $ loginApi ""

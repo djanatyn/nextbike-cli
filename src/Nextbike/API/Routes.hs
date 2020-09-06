@@ -5,14 +5,14 @@
 -- This type represents API routes that are used by the client.
 module Nextbike.API.Routes
   ( -- * https://webview.nextbike.net
-    WebviewAPI (..),
+    WebviewApi (..),
   )
 where
 
-import Nextbike.API.Types (APIKey)
+import Nextbike.API.Types (ApiKey)
 import Servant.API
 import Servant.API.Generic
 
-data WebviewAPI r = WebviewAPI
-  {getAPIKey :: r :- "getAPIKey.json" :> Get '[JSON] APIKey}
+data WebviewApi r = WebviewAPI
+  {getApiKey :: r :- "getAPIKey.json" :> Get '[JSON] ApiKey}
   deriving (Generic)
