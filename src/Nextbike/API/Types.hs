@@ -14,7 +14,7 @@ import Data.Aeson (FromJSON (..), withObject, (.:))
 import Data.Coerce (coerce)
 import Data.Text (Text)
 
-newtype ApiKey = ApiKey Text deriving (Show) via Text
+newtype ApiKey = ApiKey Text deriving (Show)
 
 instance FromJSON ApiKey where
   parseJSON = withObject "response" $ \o -> do

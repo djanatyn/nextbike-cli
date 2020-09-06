@@ -19,7 +19,6 @@ library:
 default-extensions:
   - TypeApplications
   - DeriveGeneric
-  - DerivingVia
   - DataKinds
   - TypeOperators
   - OverloadedStrings
