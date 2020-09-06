@@ -1,3 +1,5 @@
+{-# LANGUAGE TypeApplications #-}
+
 -- |
 -- Module: Nextbike.API.Client
 -- Description: Exports a Nextbike API Client.
