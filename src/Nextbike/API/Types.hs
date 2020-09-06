@@ -10,7 +10,10 @@ module Nextbike.API.Types
   )
 where
 
-import Data.Aeson (FromJSON)
+import Data.Aeson (FromJSON (..), withObject, (.:))
 import Data.Text (Text)
 
-newtype APIKey = APIKey Text deriving (FromJSON) via Text
+newtype APIKey = APIKey Text deriving (Show) via Text
+
+instance FromJSON APIKey where
+  parseJSON = withObject "response" (.: "apiKey")
