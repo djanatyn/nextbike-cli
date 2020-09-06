@@ -32,6 +32,6 @@ data NextbikeApi r = NextbikeApi
         :> QueryParam' '[Required] "mobile" Mobile
         :> QueryParam' '[Required] "pin" Pin
         :> QueryParam' '[Required] "show_errors" Bool
-        :> Get '[JSON] Value
+        :> Post '[JSON] Value
   }
   deriving (Generic)
