@@ -34,3 +34,4 @@ data NextbikeApi r = NextbikeApi
         :> QueryParam "show_errors" Bool
         :> Get '[JSON] Value
   }
+  deriving (Generic)
