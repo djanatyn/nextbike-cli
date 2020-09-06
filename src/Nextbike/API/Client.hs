@@ -10,28 +10,37 @@
 module Nextbike.API.Client
   ( -- * Clients
     webviewClient,
-   
+
     -- * BaseUrls
     nextbikeApi,
 
     -- * Client Functions
-    fetchApiKey
+    fetchApiKey,
   )
 where
 
+import Data.Aeson (Value)
 import Network.HTTP.Client.TLS (newTlsManager)
-import Nextbike.API.Routes (WebviewApi(..))
-import Nextbike.API.Types (ApiKey)
+import Nextbike.API.Routes
+  ( NextbikeApi (..),
+    WebviewApi (..),
+  )
+import Nextbike.API.Types
+  ( ApiKey,
+    Mobile,
+    NextbikeLogin (..),
+    Pin,
+  )
 import Servant.Client
-  ( BaseUrl(..),
-    ClientM,
+  ( BaseUrl (..),
     ClientError,
+    ClientM,
     Scheme (Https),
     mkClientEnv,
-    runClientM
+    runClientM,
   )
 import Servant.Client.Core (RunClient)
-import Servant.Client.Generic (genericClient, AsClientT)
+import Servant.Client.Generic (AsClientT, genericClient)
 
 webviewClient :: RunClient m => WebviewApi (AsClientT m)
 webviewClient = genericClient @WebviewApi
