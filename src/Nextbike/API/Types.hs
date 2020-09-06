@@ -20,3 +20,13 @@ instance FromJSON ApiKey where
   parseJSON = withObject "response" $ \o -> do
     key <- o .: "apiKey"
     return $ ApiKey key
+
+newtype Mobile = Mobile Text deriving (Show)
+
+newtype Pin = Pin Int deriving (Show)
+
+data NextbikeLogin = NextbikeLogin
+  { apiKey :: ApiKey,
+    mobile :: Mobile,
+    pin :: Pin
+  }
