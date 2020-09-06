@@ -11,6 +11,9 @@ module Nextbike.API.Client
    
     -- * BaseUrls
     nextbikeApi,
+
+    -- * Client Functions
+    fetchApiKey
   )
 where
 
