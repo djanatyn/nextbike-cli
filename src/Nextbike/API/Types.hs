@@ -35,3 +35,4 @@ data NextbikeLogin = NextbikeLogin
     mobile :: Mobile,
     pin :: Pin
   }
+  deriving (Show)
