@@ -11,6 +11,7 @@ dependencies:
   - servant-client
   - servant-client-core
   - http-client-tls
+  - http-media
 
 library:
   source-dirs:
@@ -24,3 +25,7 @@ default-extensions:
   - OverloadedStrings
   - NamedFieldPuns
   - DerivingVia
+  - GeneralizedNewtypeDeriving
+  - StandaloneDeriving
+  - FlexibleInstances
+  - MultiParamTypeClasses
