@@ -12,7 +12,9 @@ module Nextbike.API.Routes
   )
 where
 
-import Data.Aeson (Value)
+import Data.Aeson (FromJSON, ToJSON, Value)
+import Data.Coerce (coerce)
+import qualified Network.HTTP.Media as M
 import Nextbike.API.Types
   ( ApiKey,
     Mobile,
@@ -24,6 +26,13 @@ import Servant.API.Generic
 data WebviewApi r = WebviewAPI
   {getApiKey :: r :- "getAPIKey.json" :> Get '[JSON] ApiKey}
   deriving (Generic)
+
+-- newtype BikeJSON = BikeJSON JSON
+
+-- instance FromJSON a => MimeUnrender BikeJSON a
+
+-- instance Accept BikeJSON where
+--   contentType _ = "application" M.// "json"
 
 data NextbikeApi r = NextbikeApi
   { nextbikeLogin ::

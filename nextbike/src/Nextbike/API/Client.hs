@@ -16,6 +16,7 @@ module Nextbike.API.Client
 
     -- * Client Functions
     fetchApiKey,
+    fetchSession,
   )
 where
 
