@@ -12,8 +12,10 @@ module Nextbike.API.Routes
   )
 where
 
-import Data.Aeson (FromJSON, ToJSON, Value)
+import Data.Aeson (FromJSON, ToJSON, Value, eitherDecode)
+import qualified Data.ByteString.Lazy.Char8 as BSC
 import Data.Coerce (coerce)
+import Network.HTTP.Media hiding (Accept)
 import qualified Network.HTTP.Media as M
 import Nextbike.API.Types
   ( ApiKey,
@@ -27,12 +29,13 @@ data WebviewApi r = WebviewAPI
   {getApiKey :: r :- "getAPIKey.json" :> Get '[JSON] ApiKey}
   deriving (Generic)
 
--- newtype BikeJSON = BikeJSON JSON
+data BikeJSON
 
--- instance FromJSON a => MimeUnrender BikeJSON a
+instance MimeUnrender BikeJSON Value where
+  mimeUnrender _ = eitherDecode
 
--- instance Accept BikeJSON where
---   contentType _ = "application" M.// "json"
+instance Accept BikeJSON where
+  contentType _ = "application" // "json" /: ("", "")
 
 data NextbikeApi r = NextbikeApi
   { nextbikeLogin ::
@@ -41,6 +44,6 @@ data NextbikeApi r = NextbikeApi
         :> QueryParam' '[Required] "mobile" Mobile
         :> QueryParam' '[Required] "pin" Pin
         :> QueryParam' '[Required] "show_errors" Bool
-        :> Post '[JSON] Value
+        :> Post '[BikeJSON] Value
   }
   deriving (Generic)
