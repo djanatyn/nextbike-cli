@@ -12,6 +12,7 @@ haskellPackages.mkDerivation rec {
     haskell-language-server
 
     base
+    zlib
     text
     bytestring
     http-client-tls
